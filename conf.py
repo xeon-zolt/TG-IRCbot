@@ -59,7 +59,7 @@ config = {
         },
         'telegrambot': {
             # your API token
-            'token': os.environ(ApiToken),
+            'token': os.environ["ApiToken"],
             # your group chat id
             # negative as in API response
             'groupid': -1001215620131,
