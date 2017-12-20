@@ -3,8 +3,10 @@
 
 import sys
 import logging
+import os
 
-from config import config
+
+from conf import config
 from orizonhub import base
 
 logging.basicConfig(stream=sys.stderr, format='%(asctime)s [%(levelname).1s:%(name).8s] %(message)s', level=logging.DEBUG if config['debug'] else logging.INFO)
