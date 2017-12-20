@@ -17,19 +17,20 @@ RUN apt-get install -y tar git curl nano wget dialog net-tools build-essential
 
 # Install Python and Basic Python Tools
 RUN apt-get install -y python3 python-dev python-distribute python-pip
-
+RUN apt-get -y update && apt-get install -y python3-pip
 #telegram-cli
 RUN apt-get install -y liblua5.2-0 libconfig9
 RUN wget https://bugs.launchpad.net/~miry/+archive/ppa/+files/telegram-cli_0.0.20140125-1_amd64.deb
 RUN dpkg -i ./telegram-cli_0.0.20140125-1_amd64.deb
 RUN apt-get -f install
 
-# Copy the application folder inside the container
-RUN git clone https://github.com/xeon-zolt/TG-IRCbot.git
+RUN apt-get install -y python3-requests 
+RUN pip3 install pytz
 
-# Get pip to download and install requirements:
-#RUN pip install -r /Flask-OCR/requirements.txt
-RUN pip install config
+# Copy the application folder inside the container
+COPY . /TG-IRCbot/
+#RUN git clone https://github.com/xeon-zolt/TG-IRCbot.git
+
 
 # Expose ports
 EXPOSE 80
